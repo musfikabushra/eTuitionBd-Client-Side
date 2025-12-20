@@ -89,7 +89,7 @@ const Contact = () => {
             </div>
 
             {/* Support Message Box */}
-            <div className="bg-primary rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-r from-primary via-indigo-500 to-primary p-8 rounded-[2.5rem] text-white shadow-2xl shadow-indigo-200">
               <MessageSquare size={32} className="mb-4 opacity-50" />
               <h3 className="text-xl font-bold mb-2">Live Support?</h3>
               <p className="text-white/80 text-sm mb-4">Our dedicated support team is available for urgent queries.</p>
@@ -157,7 +157,7 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary w-full md:w-auto px-12 h-14 rounded-xl shadow-lg shadow-primary/20 flex items-center gap-2">
+              <button type="submit" className="flex  gap-2btn btn-primary btn-lg hover:scale-105 active:scale-95 gap-2 group/btn relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-primary via-indigo-500 to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 rounded-2xl shadow-lg shadow-primary/25 overflow-hidden">
                 <Send size={18} />
                 Send Message
               </button>
