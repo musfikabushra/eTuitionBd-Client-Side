@@ -186,21 +186,37 @@ const AppliedTutors = () => {
   }, [axiosSecure]);
 
   // Accept / Reject action
-  const handleAction = async (id, status) => {
-    try {
-      // Call backend to update application status
-      await axiosSecure.patch(`/applications/${id}`, { status });
-      toast.success(`Tutor application ${status}ed!`);
+  // const handleAction = async (id, status) => {
+  //   try {
+  //     // Call backend to update application status
+  //     await axiosSecure.patch(`/applications/${id}`, { status });
+  //     toast.success(`Tutor application ${status}ed!`);
 
-      // Update UI
-      setApplications((prev) =>
-        prev.map((app) => (app._id === id ? { ...app, status } : app))
-      );
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to update application status.");
-    }
-  };
+  //     // Update UI
+  //     setApplications((prev) =>
+  //       prev.map((app) => (app._id === id ? { ...app, status } : app))
+  //     );
+  //   } catch (err) {
+  //     console.error(err);
+  //     toast.error("Failed to update application status.");
+  //   }
+  // };
+
+
+  const handleAction = async (id, status) => {
+  try {
+    await axiosSecure.patch(`/applications/${id}`, { status });
+    toast.success(`Tutor application ${status}ed!`);
+
+    setApplications((prev) =>
+      prev.map((app) => (app._id === id ? { ...app, status } : app))
+    );
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to update application status.");
+  }
+};
+
 
   return (
     <div className="w-full min-h-screen">

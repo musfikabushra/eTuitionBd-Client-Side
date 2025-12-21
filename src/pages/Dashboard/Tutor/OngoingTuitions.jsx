@@ -1,5 +1,22 @@
+import React, { useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
+
 const OngoingTuitions = () => {
-  const ongoing = []; // fetch from API
+  const [ongoing, setOngoing] = useState([]);
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    const fetchOngoing = async () => {
+      try {
+        const res = await axiosSecure.get("/tuitions?status=Ongoing");
+        setOngoing(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchOngoing();
+  }, [axiosSecure]);
 
   return (
     <div>
@@ -21,4 +38,5 @@ const OngoingTuitions = () => {
     </div>
   );
 };
+
 export default OngoingTuitions;
