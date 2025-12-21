@@ -61,8 +61,21 @@ export const router = createBrowserRouter([
       {
           path: "tutors/:id",
   element: <TutorProfile />,
+      }, 
+      {
+        path: "login",
+        element: <Login />,
       },
-      
+      {
+        path: "register",
+        element: <Register />,
+      },
+    ],
+  },
+
+
+
+
       {
         path: "dashboard",
         element: <DashboardLayout />,
@@ -78,6 +91,10 @@ export const router = createBrowserRouter([
           { path: "tutor/my-applications", element: <MyApplications /> },
           { path: "tutor/ongoing-tuitions", element: <OngoingTuitions /> },
           { path: "tutor/revenue", element: <Revenue /> },
+          {
+        path: "dashboard/tutor",
+        element: <TutorDashboard />,
+      },
     
 
 
@@ -88,18 +105,50 @@ export const router = createBrowserRouter([
         ],
       },
 
-      {
-        path: "dashboard/tutor",
-        element: <TutorDashboard />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-    ],
-  },
+      
+      
 ]);
+
+
+
+
+    // {
+    //     path: "dashboard",
+    //     element: <DashboardLayout />,
+    //     children: [
+    //       // Student
+    //       { path: "student/my-tuitions", element: <MyTuitions /> },
+    //       { path: "student/post-tuition", element: <PostTuition /> },
+    //       { path: "student/applied-tutors", element: <AppliedTutors /> },
+    //       { path: "student/payments", element: <Payments /> },
+    //       { path: "student/profile", element: <ProfileSettings /> },
+
+    //       // Tutor
+    //       { path: "tutor/my-applications", element: <MyApplications /> },
+    //       { path: "tutor/ongoing-tuitions", element: <OngoingTuitions /> },
+    //       { path: "tutor/revenue", element: <Revenue /> },
+    
+
+
+    // // Admin
+    // { path: "admin/users", element: <Users /> },
+    //       { path: "admin/tuitions", element: <Tuitions /> },
+    //       { path: "admin/reports", element: <Reports /> },
+    //     ],
+    //   },
+
+    //   {
+    //     path: "dashboard/tutor",
+    //     element: <TutorDashboard />,
+    //   },
+    //   {
+    //     path: "login",
+    //     element: <Login />,
+    //   },
+    //   {
+    //     path: "register",
+    //     element: <Register />,
+    //   },
+
+
+    // dashboard layout fix korci 

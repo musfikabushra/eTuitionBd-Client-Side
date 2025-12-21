@@ -6,10 +6,11 @@ import {
 } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import useAuth from "../hooks/useAuth";
+import useRole from "../hooks/useRole";
 
 const DashboardLayout = () => {
   const { user } = useAuth() ?? {};
-  const role = user?.role || "Student";
+  const { role } = useRole();
   const location = useLocation();
 
   const linkStyle = ({ isActive }) =>
@@ -23,7 +24,7 @@ const DashboardLayout = () => {
       <aside className="w-64 md:w-72 bg-white border-r border-slate-200 flex flex-col justify-between fixed top-0 left-0 h-screen shadow-sm z-20  ">
         {/* Logo */}
         <div className="p-8 ">
-          <h2 className="text-2xl font-black text-indigo-600 flex items-center gap-2 rounded-2xl shadow-2xl shadow-primary/30  active:scale-95 transition-all gap-2 px-10 group/btn relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-primary via-indigo-500 to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 rounded-2xl shadow-lg shadow-primary/25 overflow-hidden border-none">
+          <h2 className="text-2xl font-black text-indigo-600 flex items-center gap-2 rounded-2xl shadow-2xl shadow-primary/30  active:scale-95 transition-all gap-2 px-10  relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-primary via-indigo-500 to-primary mb-4  rounded-2xl shadow-lg shadow-primary/25 overflow-hidden border-none">
             <MdDashboard className="text-3xl" />
             <span className="tracking-tight">eTuitionBd</span>
           </h2>
@@ -92,8 +93,8 @@ const DashboardLayout = () => {
         </header>
 
         {/* Page Content */}
-        <div className="p-8 flex-grow overflow-y-auto">
-          <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-200 min-h-full">
+        <div className="p-8 grow overflow-y-auto">
+          <div className="bg-white rounded-4xl p-8 shadow-sm border border-slate-200 min-h-full">
             <Outlet />
           </div>
         </div>
@@ -103,3 +104,6 @@ const DashboardLayout = () => {
 };
 
 export default DashboardLayout;
+
+
+

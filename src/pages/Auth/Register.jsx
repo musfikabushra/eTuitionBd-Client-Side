@@ -4,7 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { User, Mail, Lock, Phone, UserCircle, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
+
 
 const Register = () => {
   const navigate = useNavigate();

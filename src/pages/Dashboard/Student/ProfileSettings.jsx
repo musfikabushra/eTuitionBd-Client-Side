@@ -1,125 +1,119 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { User, Camera, Save, Image as ImageIcon } from "lucide-react";
-import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { User, Image as ImageIcon, Camera, Mail } from "lucide-react";
 import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
-const ProfileSettings = () => {
-  const { user, updateUserProfile } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  
-  const [name, setName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
-  const [loading, setLoading] = useState(false);
+const EditProfile = () => {
+    const { user, updateUserProfile, setUser } = useAuth();
 
-  
-  useEffect(() => {
-    if (user) {
-      setName(user?.displayName || "");
-      setPhotoURL(user?.photoURL || "");
-    }
-  }, [user]);
+    const { register, handleSubmit, watch, formState: { isSubmitting }, } = useForm({
+        defaultValues: {
+            name: user?.displayName || user?.providerData?.[0]?.displayName || "",
+            photo: user?.photoURL || user?.providerData?.[0]?.photoURL || "",
+        },
+    });
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+    const nameValue = watch("name");
+    const photoValue = watch("photo");
 
-    try {
-      // Step 1: Firebase Profile Update (Local state update)
-      await updateUserProfile(name, photoURL);
+    const onSubmit = async (data) => {
+        try {
+            await updateUserProfile({
+                displayName: data.name,
+                photoURL: data.photo,
+            });
+            setUser({ ...user, displayName: data.name, photoURL: data.photo });
+            toast.success("Profile updated successfully!");
+        } catch (err) {
+            toast.error(err.message);
+        }
+    };
 
-      
-      const updatedInfo = {
-        name: name,
-        image: photoURL
-      };
-      
-      const res = await axiosSecure.patch(`/users/${user?.email}`, updatedInfo);
+    return (
+        <div className="min-h-screen flex justify-center items-center bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-100 via-indigo-50 to-white py-12 px-4">
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="w-full max-w-lg bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
+            >
+                {/* Profile Header */}
+                <div className="flex flex-col items-center mb-10 text-center">
+                    <h2 className="text-3xl font-black text-slate-800 mb-8">Edit Profile</h2>
+                    
+                    <div className="relative group">
+                        <div className="absolute inset-0 bg-indigo-500 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                        <img 
+                            src={photoValue || "https://i.ibb.co.com/mR70vBR/user.png"} 
+                            alt="Profile"
+                            className="relative w-32 h-32 rounded-3xl object-cover border-4 border-white shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                            onError={(e) => { e.target.src = "https://i.ibb.co.com/mR70vBR/user.png"; }}
+                        />
+                        <div className="absolute -bottom-2 -right-2 bg-indigo-600 p-2.5 rounded-2xl text-white shadow-lg border-4 border-white">
+                            <Camera size={18} />
+                        </div>
+                    </div>
 
-      if (res.data.modifiedCount > 0 || res.data.success) {
-        toast.success("Profile fully updated in Firebase & Database!");
-      } else {
-        toast.success("Profile Updated!");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to update profile: " + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+                    <div className="mt-5">
+                        <h3 className="text-2xl font-bold text-slate-800 tracking-tight">
+                            {nameValue || "Your Name"}
+                        </h3>
+                        <div className="flex items-center justify-center gap-2 text-slate-500 mt-1 font-medium">
+                            <Mail size={14} className="text-indigo-400" />
+                            <span className="text-sm">{user?.email || user?.providerData?.[0]?.email}</span>
+                        </div>
+                    </div>
+                </div>
 
-  return (
-    <div className="max-w-2xl mx-auto py-16 px-6">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-slate-50"
-      >
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-black text-slate-800">Edit Profile</h2>
-          <p className="text-slate-500 font-medium">Update your name and profile picture</p>
+                {/* Form Section */}
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="space-y-5">
+                        {/* Name Input */}
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
+                            <div className="relative group">
+                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                                <input 
+                                    {...register("name", { required: "Name is required" })} 
+                                    type="text" 
+                                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-4 py-4 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700" 
+                                    placeholder="Ex: John Doe" 
+                                />
+                            </div>
+                        </div>
+
+                        {/* Photo URL Input */}
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Avatar Link (URL)</label>
+                            <div className="relative group">
+                                <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                                <input 
+                                    {...register("photo", { required: "Photo URL is required" })} 
+                                    type="url" 
+                                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-4 py-4 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700" 
+                                    placeholder="https://image-link.com" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button 
+                        type="submit" 
+                        disabled={isSubmitting} 
+                        className="w-full hover:scale-105 bg-gradient-to-r from-primary via-indigo-500 to-primary text-white rounded-2xl font-bold py-4.5 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2 uppercase text-sm tracking-widest h-[56px]"
+                    >
+                        {isSubmitting ? (
+                            <span className="loading loading-spinner loading-md"></span>
+                        ) : (
+                            "Update Profile"
+                        )}
+                    </button>
+                </form>
+            </motion.div>
         </div>
-
-        <form onSubmit={handleUpdate} className="space-y-6">
-          {/* Avatar Preview */}
-          <div className="flex justify-center mb-10">
-            <div className="relative">
-              <img 
-                src={photoURL || "https://i.ibb.co.com/mR70vBR/user.png"} 
-                className="w-36 h-36 rounded-[2.5rem] object-cover border-4 border-indigo-50 shadow-2xl transition-all duration-500"
-                alt="Profile Preview"
-                onError={(e) => { e.target.src = "https://i.ibb.co.com/mR70vBR/user.png"; }}
-              />
-              <div className="absolute -bottom-2 -right-2 bg-indigo-600 p-3 rounded-2xl text-white shadow-lg border-4 border-white">
-                <Camera size={20} />
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-5">
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-600 ml-1">Full Name</label>
-              <div className="relative">
-                <User className="absolute left-4 top-4 text-slate-400" size={20} />
-                <input 
-                  type="text" 
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-6 py-4 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-600 ml-1">Photo URL</label>
-              <div className="relative">
-                <ImageIcon className="absolute left-4 top-4 text-slate-400" size={20} />
-                <input 
-                  type="text" 
-                  value={photoURL}
-                  onChange={(e) => setPhotoURL(e.target.value)}
-                  placeholder="Paste image link here"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-6 py-4 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700"
-                />
-              </div>
-            </div>
-          </div>
-
-          <button 
-            type="submit"
-            disabled={loading}
-            className={`w-full hover:scale-105  bg-gradient-to-r from-primary via-indigo-500 to-primary text-white font-black py-5 rounded-2xl shadow-xl shadow-indigo-200 transition-all flex items-center justify-center gap-3 active:scale-95 ${loading ? "opacity-70 cursor-wait" : ""}`}
-          >
-            {loading ? <span className="loading loading-spinner"></span> : <Save size={22} />}
-            {loading ? "Updating..." : "Save Changes"}
-          </button>
-        </form>
-      </motion.div>
-    </div>
-  );
+    );
 };
 
-export default ProfileSettings;
+export default EditProfile;

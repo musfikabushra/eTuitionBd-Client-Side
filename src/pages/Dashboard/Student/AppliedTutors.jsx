@@ -14,13 +14,12 @@ const AppliedTutors = () => {
     //   .then(data => { setApplications(data); setLoading(false); })
     //   .catch(() => setLoading(false));
     
-    // সাময়িকভাবে লোডিং ফলস করে রাখছি ডেমো দেখার জন্য
     setLoading(false);
   }, []);
 
   const handleAction = (id, status) => {
     toast.success(`Tutor application ${status}ed!`);
-    // এখানে আপনার একসেপ্ট/রিজেক্ট লজিক অ্যাড করবেন
+
   };
 
   return (
@@ -154,3 +153,4 @@ const AppliedTutors = () => {
 };
 
 export default AppliedTutors;
+
