@@ -12,7 +12,7 @@
 
 //   useEffect(() => {
 //     // API URL based on your local environment
-//     fetch(`http://localhost:3000/tutors?page=${page}&limit=6&search=${searchTerm}`)
+//     fetch(`https://etuitionbd-server-side.vercel.app/tutors?page=${page}&limit=6&search=${searchTerm}`)
 //       .then((res) => res.json())
 //       .then((data) => {
 //         setTutors(data.tutors || []);

@@ -9,7 +9,7 @@
 
 //   useEffect(() => {
 //     // API Call logic (placeholder)
-//     // fetch(`http://localhost:3000/applications`)
+//     // fetch(`https://etuitionbd-server-side.vercel.app/applications`)
 //     //   .then(res => res.json())
 //     //   .then(data => { setApplications(data); setLoading(false); })
 //     //   .catch(() => setLoading(false));
