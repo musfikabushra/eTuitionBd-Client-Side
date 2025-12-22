@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  // baseURL: "http://localhost:3000",
-  baseURL: "http://localhost:3000",
+  baseURL: "https://etuitionbd-server-side.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -11,3 +10,7 @@ const useAxiosSecure = () => {
 
 export default useAxiosSecure;
 
+
+
+//  baseURL: "https://etuitionbd-server-side.vercel.app",
+//  zoto jaigai add korchen sob gola local host diye hobe, ekahn theke ekbar change korle hoye zabe

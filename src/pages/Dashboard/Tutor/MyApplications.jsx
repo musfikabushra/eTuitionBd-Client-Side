@@ -102,10 +102,17 @@ const handleDelete = async (appId) => {
         <span>{app.class}</span>
       </td>
 
+
+{/*  apnar json e subject, class nai, ei gola add korte hobe */}
+{/* apni baci achen? bushraaaaaaaaaaaaaaaaaaaaaaaaaa */}
+{/* apni koi?  */}
+
+
+
       {/* Student Info */}
       <td>
-        <span className="font-semibold">{app.student?.name}</span><br />
-        <span>{app.student?.email}</span>
+        <span className="font-semibold">{app.tuitionStudentName}</span><br />
+        <span>{app.tuitionStudentEmail}</span>
       </td>
 
       <td>{app.qualifications}</td>
@@ -174,70 +181,7 @@ const handleDelete = async (appId) => {
   <div className="modal-box bg-white">
     <h3 className="font-bold text-[1.5rem] text-center">Update Application</h3>
     {selectedApp && (
-      // <form
-      //   onSubmit={async (e) => {
-      //     e.preventDefault();
-      //     // Patch API call
-      //     const updatedData = {
-      //       qualifications: e.target.qualifications.value,
-      //       experience: e.target.experience.value,
-      //       expectedSalary: e.target.salary.value,
-      //       contact: e.target.contact.value,
-      //     };
-      //     const res = await axiosSecure.patch(`/applications/${selectedApp._id}`, updatedData);
-      //     if (res.data.modifiedCount > 0) {
-      //       refetch();
-      //       UpdateModalRef.current.close();
-      //       toast.success("Application updated successfully!");
-      //     } else {
-      //       toast.error("Update failed!");
-      //     }
-      //   }}
-      //   className="space-y-3 mt-4"
-      // >
-      //   <label className="label">Qualifications</label>
-      //   <input
-      //     name="qualifications"
-      //     type="text"
-      //     defaultValue={selectedApp.qualifications || ""}
-      //     className="input w-full"
-      //     required
-      //   />
-
-      //   <label className="label">Experience</label>
-      //   <input
-      //     name="experience"
-      //     type="text"
-      //     defaultValue={selectedApp.experience || ""}
-      //     className="input w-full"
-      //     required
-      //   />
-
-      //   <label className="label">Expected Salary</label>
-      //   <input
-      //     name="salary"
-      //     type="number"
-      //     defaultValue={selectedApp.expectedSalary || ""}
-      //     className="input w-full"
-      //     required
-      //   />
-
-      //   <label className="label">Contact Number</label>
-      //   <input
-      //     name="contact"
-      //     type="text"
-      //     defaultValue={selectedApp.contact || ""}
-      //     className="input w-full"
-      //     required
-      //   />
-
-      //   <button
-      //     type="submit"
-      //     className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3"
-      //   >
-      //     Update Application
-      //   </button>
-      // </form>
+    
       <form onSubmit={(e) => handleUpdateSubmit(e, selectedApp)} className="space-y-3 mt-4">
   <label className="label">Qualifications</label>
   <input
@@ -305,4 +249,67 @@ export default MyApplications;
 
 
 
+  // <form
+      //   onSubmit={async (e) => {
+      //     e.preventDefault();
+      //     // Patch API call
+      //     const updatedData = {
+      //       qualifications: e.target.qualifications.value,
+      //       experience: e.target.experience.value,
+      //       expectedSalary: e.target.salary.value,
+      //       contact: e.target.contact.value,
+      //     };
+      //     const res = await axiosSecure.patch(`/applications/${selectedApp._id}`, updatedData);
+      //     if (res.data.modifiedCount > 0) {
+      //       refetch();
+      //       UpdateModalRef.current.close();
+      //       toast.success("Application updated successfully!");
+      //     } else {
+      //       toast.error("Update failed!");
+      //     }
+      //   }}
+      //   className="space-y-3 mt-4"
+      // >
+      //   <label className="label">Qualifications</label>
+      //   <input
+      //     name="qualifications"
+      //     type="text"
+      //     defaultValue={selectedApp.qualifications || ""}
+      //     className="input w-full"
+      //     required
+      //   />
 
+      //   <label className="label">Experience</label>
+      //   <input
+      //     name="experience"
+      //     type="text"
+      //     defaultValue={selectedApp.experience || ""}
+      //     className="input w-full"
+      //     required
+      //   />
+
+      //   <label className="label">Expected Salary</label>
+      //   <input
+      //     name="salary"
+      //     type="number"
+      //     defaultValue={selectedApp.expectedSalary || ""}
+      //     className="input w-full"
+      //     required
+      //   />
+
+      //   <label className="label">Contact Number</label>
+      //   <input
+      //     name="contact"
+      //     type="text"
+      //     defaultValue={selectedApp.contact || ""}
+      //     className="input w-full"
+      //     required
+      //   />
+
+      //   <button
+      //     type="submit"
+      //     className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3"
+      //   >
+      //     Update Application
+      //   </button>
+      // </form>

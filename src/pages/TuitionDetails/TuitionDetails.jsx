@@ -255,6 +255,16 @@ const TuitionDetails = () => {
       tuitionId: tuition._id,
       tuitionStudentName: tuition.studentName,
       tuitionStudentEmail: tuition.studentEmail,
+      class:tuition.class,
+      subject:tuition.subject,
+
+
+
+
+
+
+
+
       ...formData,
       createdAt: new Date(),
       status: "Pending"

@@ -1,71 +1,172 @@
+// import { useEffect, useState } from "react";
+// import Swal from "sweetalert2";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
+
+// const Tuitions = () => {
+//   const axiosSecure = useAxiosSecure();
+//   const [tuitions, setTuitions] = useState([]);
+
+//   // Load all tuitions
+//   useEffect(() => {
+//     axiosSecure
+//       .get("/tuitions/admin")
+//       .then((res) => setTuitions(res.data))
+//       .catch((err) => console.log(err));
+//   }, []);
+
+//   // ---- Approve Handler ----
+//   const handleApprove = async (id) => {
+//     const confirm = await Swal.fire({
+//       title: "Approve Tuition?",
+//       text: "You are approving this tuition post",
+//       icon: "question",
+//       showCancelButton: true,
+//       confirmButtonText: "Yes, Approve",
+//     });
+
+//     if (!confirm.isConfirmed) return;
+
+//     try {
+//       const res = await axiosSecure.patch(`/tuitions/approve/${id}`);
+
+//       if (res.data.modifiedCount > 0) {
+//         Swal.fire("Approved!", "Tuition has been approved.", "success");
+
+//         setTuitions((prev) =>
+//           prev.map((t) =>
+//             t._id === id ? { ...t, status: "Approved" } : t
+//           )
+//         );
+//       }
+//     } catch {
+//       Swal.fire("Error", "Something went wrong!", "error");
+//     }
+//   };
+
+//   // ---- Reject Handler ----
+//   const handleReject = async (id) => {
+//     const confirm = await Swal.fire({
+//       title: "Reject Tuition?",
+//       text: "Once rejected tutors cannot see this tuition",
+//       icon: "warning",
+//       showCancelButton: true,
+//       confirmButtonText: "Yes, Reject",
+//     });
+
+//     if (!confirm.isConfirmed) return;
+
+//     try {
+//       const res = await axiosSecure.patch(`/tuitions/reject/${id}`);
+
+//       if (res.data.modifiedCount > 0) {
+//         Swal.fire("Rejected!", "Tuition has been rejected.", "success");
+
+//         setTuitions((prev) =>
+//           prev.map((t) =>
+//             t._id === id ? { ...t, status: "Rejected" } : t
+//           )
+//         );
+//       }
+//     } catch {
+//       Swal.fire("Error", "Something went wrong!", "error");
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2 className="text-2xl font-bold mb-6">📚 Tuition Management</h2>
+
+//       <table className="table w-full">
+//         <thead>
+//           <tr>
+//             <th>Subject</th>
+//             <th>Class</th>
+//             <th>Location</th>
+//             <th>Budget</th>
+//             <th>Status</th>
+//             <th>Approve / Reject</th>
+//           </tr>
+//         </thead>
+
+//         <tbody>
+//           {tuitions?.map((t) => (
+//             <tr key={t._id}>
+//               <td>{t.subject}</td>
+//               <td>{t.class}</td>
+//               <td>{t.location}</td>
+//               <td>${t.budget}</td>
+//               <td className="font-semibold">{t.status}</td>
+
+//               <td className="flex gap-2">
+//                 <button
+//                   onClick={() => handleApprove(t._id)}
+//                   className="btn btn-xs btn-success"
+//                   disabled={t.status === "Approved"}
+//                 >
+//                   Approve
+//                 </button>
+
+//                 <button
+//                   onClick={() => handleReject(t._id)}
+//                   className="btn btn-xs btn-error"
+//                   disabled={t.status === "Rejected"}
+//                 >
+//                   Reject
+//                 </button>
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
+
+// export default Tuitions;
+
+
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-
-const Tuitions = () => {
+const TuitionManagement = () => {
   const axiosSecure = useAxiosSecure();
   const [tuitions, setTuitions] = useState([]);
 
   // Load all tuitions
   useEffect(() => {
     axiosSecure
-      .get("/tuitions/admin")
+      .get("/tuitionManagement")
       .then((res) => setTuitions(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => console.error("Failed to load tuitions", err));
+  }, [axiosSecure]);
 
-  // ---- Approve Handler ----
-  const handleApprove = async (id) => {
+  // ---- Status Update Handler ----
+  const updateStatus = async (id, newStatus) => {
     const confirm = await Swal.fire({
-      title: "Approve Tuition?",
-      text: "You are approving this tuition post",
-      icon: "question",
+      title: `${newStatus} Tuition?`,
+      text:
+        newStatus === "Approved"
+          ? "You are approving this tuition post"
+          : "Once rejected, tutors cannot see this tuition",
+      icon: newStatus === "Approved" ? "question" : "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, Approve",
+      confirmButtonText: `Yes, ${newStatus}`,
     });
 
     if (!confirm.isConfirmed) return;
 
     try {
-      const res = await axiosSecure.patch(`/tuitions/approve/${id}`);
+      const res = await axiosSecure.patch(`/tuitions/${id}/status`, {
+        status: newStatus,
+      });
 
       if (res.data.modifiedCount > 0) {
-        Swal.fire("Approved!", "Tuition has been approved.", "success");
+        Swal.fire(`${newStatus}!`, `Tuition has been ${newStatus.toLowerCase()}.`, "success");
 
         setTuitions((prev) =>
-          prev.map((t) =>
-            t._id === id ? { ...t, status: "Approved" } : t
-          )
-        );
-      }
-    } catch {
-      Swal.fire("Error", "Something went wrong!", "error");
-    }
-  };
-
-  // ---- Reject Handler ----
-  const handleReject = async (id) => {
-    const confirm = await Swal.fire({
-      title: "Reject Tuition?",
-      text: "Once rejected tutors cannot see this tuition",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, Reject",
-    });
-
-    if (!confirm.isConfirmed) return;
-
-    try {
-      const res = await axiosSecure.patch(`/tuitions/reject/${id}`);
-
-      if (res.data.modifiedCount > 0) {
-        Swal.fire("Rejected!", "Tuition has been rejected.", "success");
-
-        setTuitions((prev) =>
-          prev.map((t) =>
-            t._id === id ? { ...t, status: "Rejected" } : t
-          )
+          prev.map((t) => (t._id === id ? { ...t, status: newStatus } : t))
         );
       }
     } catch {
@@ -75,7 +176,13 @@ const Tuitions = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">📚 Tuition Management</h2>
+     <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+  📚 Tuition Management
+  <span className="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+    {tuitions.length} Posts
+  </span>
+</h2>
+
 
       <table className="table w-full">
         <thead>
@@ -85,7 +192,7 @@ const Tuitions = () => {
             <th>Location</th>
             <th>Budget</th>
             <th>Status</th>
-            <th>Approve / Reject</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -95,20 +202,18 @@ const Tuitions = () => {
               <td>{t.subject}</td>
               <td>{t.class}</td>
               <td>{t.location}</td>
-              <td>${t.budget}</td>
+              <td>৳ {t.budget}</td>
               <td className="font-semibold">{t.status}</td>
-
               <td className="flex gap-2">
                 <button
-                  onClick={() => handleApprove(t._id)}
+                  onClick={() => updateStatus(t._id, "Approved")}
                   className="btn btn-xs btn-success"
                   disabled={t.status === "Approved"}
                 >
                   Approve
                 </button>
-
                 <button
-                  onClick={() => handleReject(t._id)}
+                  onClick={() => updateStatus(t._id, "Rejected")}
                   className="btn btn-xs btn-error"
                   disabled={t.status === "Rejected"}
                 >
@@ -123,4 +228,4 @@ const Tuitions = () => {
   );
 };
 
-export default Tuitions;
+export default TuitionManagement;

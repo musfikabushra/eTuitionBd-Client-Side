@@ -54,6 +54,7 @@ const TuitionCard = ({ tuition }) => {
                 <span className="text-[10px] font-bold uppercase">Salary</span>
               </div>
               <p className="text-sm font-black text-gray-800">৳ {tuition.budget}</p>
+               {/* <p className="text-sm font-black text-gray-800">৳ {tuition.status}</p> */}
             </div>
           </div>
 

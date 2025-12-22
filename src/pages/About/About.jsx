@@ -2,7 +2,7 @@ import React from "react";
 import { motion, useScroll } from "framer-motion";
 import { Target, CheckCircle } from "lucide-react"; 
 import { Link } from "react-router";
-
+import learning from '../../assets/learning.jpg'
 
 const teamMembers = [
   { 
@@ -165,7 +165,7 @@ const About = () => {
 </div>
 
           <img
-            src="/src/assets/learning.jpg"
+            src={learning}
             alt="Learning"
             className="rounded-xl shadow-lg"
           />
@@ -252,3 +252,5 @@ const About = () => {
 };
 
 export default About;
+
+

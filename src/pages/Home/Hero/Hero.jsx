@@ -1,6 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, BookOpen, Users, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+
+import hero from '../../../assets/hero.jpg'
+
 const Hero = () => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
@@ -111,10 +114,10 @@ const Hero = () => {
                 className="relative"
               >
                 {/* Image Glow Effect */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-indigo-500/30 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-80 transition duration-1000"></div>
+                <div className="absolute -inset-4 bg-linear-to-tr from-primary/30 to-indigo-500/30 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-80 transition duration-1000"></div>
                 
                 <img 
-                  src="/src/assets/hero.jpg" 
+                  src={hero}
                   alt="Quality Learning" 
                   className="relative rounded-[2rem] shadow-2xl object-cover w-full aspect-[4/3] border-8 border-white"
                 />
@@ -159,3 +162,4 @@ export default Hero;
 
 
 
+//  apnar img oi vab edile deploy er pore kaj korbe na, tai fix kore dilam  bg color soralen kno? oita same ache, just ekta overlap hoyche, tai fix kore dichi

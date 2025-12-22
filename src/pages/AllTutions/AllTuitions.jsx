@@ -75,3 +75,5 @@ const AllTuitions = () => {
 };
 
 export default AllTuitions;
+
+

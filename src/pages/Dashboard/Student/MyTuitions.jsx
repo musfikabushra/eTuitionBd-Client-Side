@@ -308,6 +308,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, BookOpen, MapPin, Calendar, MoreHorizontal, Trash2, Edit3, Search } from "lucide-react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const MyTuitions = () => {
@@ -322,14 +323,39 @@ const MyTuitions = () => {
   const [selectedTuition, setSelectedTuition] = useState(null);
 
   // Delete tuition
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await axiosSecure.delete(`/tuitions/${id}`);
+  //     setTuitions((prev) => prev.filter((t) => t._id !== id));
+  //   } catch (err) {
+  //     console.error("Delete failed:", err);
+  //   }
+  // };
+
   const handleDelete = async (id) => {
-    try {
-      await axiosSecure.delete(`/tuitions/${id}`);
-      setTuitions((prev) => prev.filter((t) => t._id !== id));
-    } catch (err) {
-      console.error("Delete failed:", err);
-    }
-  };
+  const confirm = await Swal.fire({
+    title: "Are you sure?",
+    text: "Once deleted, this tuition post cannot be recovered!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, Delete",
+    cancelButtonText: "Cancel"
+  });
+
+  if (!confirm.isConfirmed) return;
+
+  try {
+    await axiosSecure.delete(`/tuitions/${id}`);
+    setTuitions((prev) => prev.filter((t) => t._id !== id));
+    Swal.fire("Deleted!", "Tuition post has been removed.", "success");
+  } catch (err) {
+    console.error("Delete failed:", err);
+    Swal.fire("Error", "Failed to delete tuition post.", "error");
+  }
+};
+
 
   // Fetch applicants for a tuition
   const fetchApplicants = async (tuition) => {
