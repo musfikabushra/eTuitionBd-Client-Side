@@ -10,7 +10,3 @@ const useAxiosSecure = () => {
 
 export default useAxiosSecure;
 
-
-
-//  baseURL: "https://etuitionbd-server-side.vercel.app",
-//  zoto jaigai add korchen sob gola local host diye hobe, ekahn theke ekbar change korle hoye zabe

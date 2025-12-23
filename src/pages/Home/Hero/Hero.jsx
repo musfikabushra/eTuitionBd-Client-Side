@@ -161,5 +161,3 @@ const Hero = () => {
 export default Hero;
 
 
-
-//  apnar img oi vab edile deploy er pore kaj korbe na, tai fix kore dilam  bg color soralen kno? oita same ache, just ekta overlap hoyche, tai fix kore dichi
