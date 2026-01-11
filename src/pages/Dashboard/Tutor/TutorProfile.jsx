@@ -46,9 +46,9 @@ const TutorProfile = () => {
       className="max-w-6xl mx-auto py-10 px-4"
     >
       {/* Top Profile Header Card */}
-      <motion.div variants={itemVariants} className="relative bg-white rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden mb-8">
+      <motion.div variants={itemVariants} className="relative  rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden mb-8">
         {/* Abstract Background Decoration */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-indigo-50 rounded-full blur-3xl opacity-60"></div>
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80  rounded-full blur-3xl opacity-60"></div>
         
         <div className="relative flex flex-col md:flex-row items-center gap-10">
           {/* Tutor Photo */}
@@ -61,7 +61,7 @@ const TutorProfile = () => {
               />
             </div>
             {tutor.verified && (
-              <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-2xl shadow-xl border border-slate-50">
+              <div className="absolute -bottom-4 -right-4  p-3 rounded-2xl shadow-xl border border-slate-50">
                 <BadgeCheck size={32} className="text-indigo-600" />
               </div>
             )}
@@ -113,7 +113,7 @@ const TutorProfile = () => {
           { icon: <BookOpen className="text-amber-500" />, label: "Total Students", value: "15+" },
           { icon: <Calendar className="text-rose-500" />, label: "Teaching Days", value: "4 Days/Week" },
         ].map((stat, i) => (
-          <div key={i} className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/30">
+          <div key={i} className=" p-6 rounded-[2rem] border border-slate-100 shadow-xl ">
             <div className="flex justify-center mb-3">{stat.icon}</div>
             <p className="text-sm font-bold text-slate-400 uppercase tracking-tighter mb-1">{stat.label}</p>
             <h4 className="text-lg font-black text-slate-800">{stat.value}</h4>
@@ -125,7 +125,7 @@ const TutorProfile = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Education & Qualifications */}
         <motion.div variants={itemVariants} className="lg:col-span-2 space-y-8">
-          <div className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/30">
+          <div className=" p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl ">
             <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
               <GraduationCap className="text-indigo-600" /> Educational Background
             </h3>
@@ -140,7 +140,7 @@ const TutorProfile = () => {
             </div>
           </div>
 
-          <div className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/30">
+          <div className=" p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl ">
             <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
               <Briefcase className="text-indigo-600" /> Professional Summary
             </h3>
@@ -154,27 +154,27 @@ const TutorProfile = () => {
 
         {/* Right Column: Expert Subjects */}
         <motion.div variants={itemVariants} className="space-y-8">
-          <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/30">
+          <div className=" p-8 rounded-[2.5rem] border border-slate-100 shadow-xl ">
             <h3 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-3">
               <BookOpen className="text-indigo-600" /> Teaching Skills
             </h3>
             <div className="flex flex-wrap gap-2">
               {['Mathematics', 'Physics', 'Chemistry', 'English', 'Biology'].map((skill, i) => (
-                <span key={i} className="bg-slate-50 text-slate-600 font-bold px-4 py-2 rounded-xl text-sm border border-slate-100">
+                <span key={i} className=" text-slate-600 font-bold px-4 py-2 rounded-xl text-sm border border-slate-100">
                   {skill}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-primary via-indigo-500 to-primary p-8 rounded-[2.5rem] text-white shadow-2xl shadow-indigo-200">
+          <div className="bg-gradient-to-r from-primary via-indigo-500 to-primary p-8 rounded-[2.5rem] text-white shadow-2xl ">
             <h3 className="text-xl font-black mb-4 flex items-center gap-2">
               <BadgeCheck /> Safe & Trusted
             </h3>
             <p className="text-indigo-100 text-sm font-medium mb-6 leading-relaxed">
               Your safety is our priority. This tutor has been manually verified by our administration.
             </p>
-            <div className="bg-white/10 p-4 rounded-2xl border border-white/20">
+            <div className=" p-4 rounded-2xl border border-white/20">
               <p className="text-xs font-black uppercase tracking-widest text-indigo-200 mb-1">Response Time</p>
               <p className="font-bold">Less than 1 hour</p>
             </div>
