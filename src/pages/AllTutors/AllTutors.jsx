@@ -26,10 +26,10 @@ useEffect(() => {
 
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-20 pt-24">
+    <div className=" min-h-screen pb-20 pt-24">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header & Search */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
+        <div className=" p-6 rounded-2xl shadow-sm border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
           <div>
             <h2 className="text-2xl mb-2 font-bold text-gray-800">All <span className=" bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent md:text-2xltracking-wide">Available</span> Tutors</h2>
             <p className="text-sm text-gray-500">Find the right mentor for your academic needs</p>

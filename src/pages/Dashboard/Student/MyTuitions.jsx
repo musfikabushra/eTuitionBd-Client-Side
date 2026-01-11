@@ -322,16 +322,7 @@ const MyTuitions = () => {
   const [selectedApplicants, setSelectedApplicants] = useState([]);
   const [selectedTuition, setSelectedTuition] = useState(null);
 
-  // Delete tuition
-  // const handleDelete = async (id) => {
-  //   try {
-  //     await axiosSecure.delete(`/tuitions/${id}`);
-  //     setTuitions((prev) => prev.filter((t) => t._id !== id));
-  //   } catch (err) {
-  //     console.error("Delete failed:", err);
-  //   }
-  // };
-
+ 
   const handleDelete = async (id) => {
   const confirm = await Swal.fire({
     title: "Are you sure?",
@@ -432,7 +423,7 @@ const MyTuitions = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white border rounded-2xl p-6 relative hover:shadow-lg transition-all"
+                className="shadow-lg rounded-2xl p-6 relative hover:shadow-lg transition-all"
               >
                 {/* Status Badge */}
                 <div className="absolute top-3 right-3">
@@ -455,11 +446,11 @@ const MyTuitions = () => {
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="p-2 bg-slate-50 rounded-xl text-center">
+                  <div className="p-2  rounded-xl text-center">
                     <p className="text-xs font-medium text-slate-500">Class</p>
                     <p className="font-bold">{tuition.class}</p>
                   </div>
-                  <div className="p-2 bg-indigo-50 rounded-xl text-center">
+                  <div className="p-2  rounded-xl text-center">
                     <p className="text-xs font-medium text-indigo-500">Salary</p>
                     <p className="font-bold text-indigo-600">৳{tuition.budget}</p>
                   </div>

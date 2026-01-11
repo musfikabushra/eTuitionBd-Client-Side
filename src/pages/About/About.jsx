@@ -37,7 +37,7 @@ const Counter = ({ value, label }) => {
     <motion.div
       whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
       viewport={{ once: true }}
-      className="bg-white rounded-xl shadow-md p-6 text-center border border-gray-100"
+      className=" rounded-xl shadow-md p-6 text-center border border-gray-100"
     >
       <h3 className="text-4xl font-bold text-primary mb-2">{value}+</h3>
       <p className="text-gray-600 font-medium">{label}</p>
@@ -104,7 +104,7 @@ const About = () => {
       </section>
 
       {/* STATS */}
-      <section className="bg-gray-50 py-16">
+      <section className=" py-16">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
           <Counter value={500} label="Students Helped" />
           <Counter value={200} label="Verified Tutors" />
@@ -122,21 +122,12 @@ const About = () => {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-12 items-center"
         >
-          {/* <div>
-            <h2 className="text-3xl font-bold mb-4">
-              📘 Learning Made Simple
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              From posting tuition needs to selecting the perfect tutor,
-              everything is designed to be smooth, fast, and student-friendly.
-            </p>
-          </div> */}
 
           <div className="space-y-6">
   {/* Title with subtle accent */}
   <div className="relative inline-block">
     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-      📘 Learning Made <span className=" bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent md:text-2xltracking-widerelative">Simple
+       Learning Made <span className=" bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent md:text-2xltracking-widerelative">Simple
         <svg className="absolute -bottom-1 left-0 w-full h-2 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
           <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" />
         </svg>
@@ -156,7 +147,7 @@ const About = () => {
       { icon: "🎯", text: "Smart matching algorithm" },
       { icon: "🛡️", text: "Verified & secure process" }
     ].map((item, index) => (
-      <div key={index} className="flex items-center gap-3 bg-white p-3 rounded-xl shadow-sm border border-gray-50 hover:border-primary/20 transition-colors">
+      <div key={index} className="flex items-center gap-3  p-3 rounded-xl shadow-sm border border-gray-50 hover:border-primary/20 transition-colors">
         <span className="text-xl">{item.icon}</span>
         <span className="text-sm font-medium text-gray-700">{item.text}</span>
       </div>
@@ -174,7 +165,7 @@ const About = () => {
 
       {/* TEAM SECTION */}
 
-      <section className="bg-gradient-to-b from-base-100 to-base-200 py-24">
+      <section className=" py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">🤝 Meet Our Awesome Team</h2>
@@ -192,7 +183,7 @@ const About = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl shadow-xl p-8 text-center border border-gray-100 group"
+                className=" rounded-2xl shadow-xl p-8 text-center border border-gray-100 group"
               >
                 <div className="relative inline-block mb-6">
                   <div className="absolute inset-0 bg-primary/20 rounded-full scale-110 group-hover:bg-primary/30 transition-all duration-300 blur-sm"></div>
@@ -217,7 +208,7 @@ const About = () => {
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl p-12 text-center border border-gray-100"
+    className="max-w-5xl mx-auto  rounded-3xl shadow-xl p-12 text-center border border-gray-100"
   >
     <h2 className="text-3xl md:text-4xl font-bold mb-6">
       🚀 Ready to Start Your Learning Journey?

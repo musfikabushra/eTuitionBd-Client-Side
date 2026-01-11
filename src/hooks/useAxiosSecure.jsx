@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: "https://etuitionbd-server-side.vercel.app",
+  baseURL: "http://localhost:3000",
 });
 
 const useAxiosSecure = () => {

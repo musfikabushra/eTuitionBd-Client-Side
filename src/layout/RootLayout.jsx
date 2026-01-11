@@ -5,18 +5,17 @@ import Navbar from "../pages/Shared/NavBar/NavBar";
 
 const RootLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen font-sans bg-gray-50">
+    <div className="flex flex-col min-h-screen font-sans bg-base-200 text-base-content">
       
+      {/* Fixed Navbar height compensate */}
       <Navbar />
 
-      
-      <main className="flex-grow">
+      <main className="flex-grow pt-16">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <Outlet />
         </div>
       </main>
 
-      
       <Footer />
     </div>
   );

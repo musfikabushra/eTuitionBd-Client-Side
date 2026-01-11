@@ -58,7 +58,7 @@ const Contact = () => {
             transition={{ delay: 0.2 }}
             className="lg:col-span-1 space-y-6"
           >
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+            <div className=" p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
               <div className="bg-primary/10 p-3 rounded-xl text-primary">
                 <Mail size={24} />
               </div>
@@ -68,7 +68,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+            <div className=" p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
               <div className="bg-primary/10 p-3 rounded-xl text-primary">
                 <Phone size={24} />
               </div>
@@ -78,18 +78,18 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+            <div className=" p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
               <div className="bg-primary/10 p-3 rounded-xl text-primary">
                 <MapPin size={24} />
               </div>
               <div>
                 <h3 className="font-bold text-lg">Location</h3>
-                <p className="text-gray-500 text-sm">Dhaka, Bangladesh</p>
+                <p className="text-gray-500 text-sm">Sylhet, Bangladesh</p>
               </div>
             </div>
 
             {/* Support Message Box */}
-            <div className="bg-gradient-to-r from-primary via-indigo-500 to-primary p-8 rounded-[2.5rem] text-white shadow-2xl shadow-indigo-200">
+            <div className="bg-gradient-to-r from-primary via-indigo-500 to-primary p-8 rounded-[2.5rem] text-white shadow-2xl ">
               <MessageSquare size={32} className="mb-4 opacity-50" />
               <h3 className="text-xl font-bold mb-2">Live Support?</h3>
               <p className="text-white/80 text-sm mb-4">Our dedicated support team is available for urgent queries.</p>
@@ -102,7 +102,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="lg:col-span-2 bg-white shadow-xl shadow-gray-100 rounded-3xl p-8 md:p-12 border border-gray-50"
+            className="lg:col-span-2  shadow-xl  rounded-3xl p-8 md:p-12 border border-gray-50"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -112,7 +112,7 @@ const Contact = () => {
                     type="text"
                     name="name"
                     placeholder="John Doe"
-                    className="input input-bordered focus:input-primary bg-gray-50 border-none h-14"
+                    className="input input-bordered focus:input-primary  border-none h-14"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -124,7 +124,7 @@ const Contact = () => {
                     type="email"
                     name="email"
                     placeholder="john@example.com"
-                    className="input input-bordered focus:input-primary bg-gray-50 border-none h-14"
+                    className="input input-bordered focus:input-primary  border-none h-14"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -138,7 +138,7 @@ const Contact = () => {
                   type="text"
                   name="subject"
                   placeholder="How can we help?"
-                  className="input input-bordered focus:input-primary bg-gray-50 border-none h-14"
+                  className="input input-bordered focus:input-primary  border-none h-14"
                   value={formData.subject}
                   onChange={handleChange}
                   required
@@ -150,7 +150,7 @@ const Contact = () => {
                 <textarea
                   name="message"
                   placeholder="Write your message here..."
-                  className="textarea textarea-bordered focus:textarea-primary bg-gray-50 border-none min-h-[150px] pt-4"
+                  className="textarea textarea-bordered focus:textarea-primary  border-none min-h-[150px] pt-4"
                   value={formData.message}
                   onChange={handleChange}
                   required

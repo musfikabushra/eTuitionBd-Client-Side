@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext } from 'react';
-import { 
+import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
     onAuthStateChanged,
@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    console.log(user)
+
 
     // Register user
     const registerUser = (email, password) => {
@@ -44,20 +44,22 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
- 
+
 
     const updateUserProfile = async (name, photoURL) => {
-  const currentUser = auth.currentUser;
-  if (!currentUser) {
-    console.warn("No current user found for profile update");
-    return;
-  }
+        const currentUser = auth.currentUser;
+        if (!currentUser) {
+            console.warn("No current user found for profile update");
+            return;
+        }
 
-  return updateProfile(currentUser, {
-    displayName: name,
-    photoURL: photoURL || "",
-  });
-};
+
+
+        return updateProfile(currentUser, {
+            displayName: name,
+            photoURL: photoURL || "",
+        });
+    };
 
 
     // Observe auth state

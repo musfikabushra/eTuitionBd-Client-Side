@@ -30,6 +30,7 @@ import Tuitions from "../pages/Dashboard/Admin/Tuitions";
 import Reports from "../pages/Dashboard/Admin/Reports";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Overview from "../pages/Dashboard/Overview/Overview";
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,7 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <DashboardLayout />,
     children: [
+      { index: true, element: <Overview /> },
       {
         path: 'student/payment-success',
         Component: PaymentSuccess

@@ -36,7 +36,7 @@ const EditProfile = () => {
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="w-full max-w-lg bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
+                className="w-full max-w-lg p-8 md:p-10 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
             >
                 {/* Profile Header */}
                 <div className="flex flex-col items-center mb-10 text-center">
@@ -102,7 +102,7 @@ const EditProfile = () => {
                     <button 
                         type="submit" 
                         disabled={isSubmitting} 
-                        className="w-full hover:scale-105 bg-gradient-to-r from-primary via-indigo-500 to-primary text-white rounded-2xl font-bold py-4.5 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2 uppercase text-sm tracking-widest h-[56px]"
+                        className="w-full hover:scale-105 bg-gradient-to-r from-primary via-indigo-500 to-primary text-white rounded-2xl font-bold py-4.5 shadow-xl  transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2 uppercase text-sm tracking-widest h-[56px]"
                     >
                         {isSubmitting ? (
                             <span className="loading loading-spinner loading-md"></span>

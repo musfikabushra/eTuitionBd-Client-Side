@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaUserPlus, FaClipboardList, FaBell, FaMoneyBillWave, FaSearch, FaFileAlt, FaHandshake, FaGraduationCap } from "react-icons/fa";
+import { FaUserPlus, FaClipboardList, FaBell, FaMoneyBillWave, FaSearch, FaFileAlt, FaHandshake, FaGraduationCap,
+  FaUserGraduate, FaChalkboardTeacher, FaCheckCircle, FaStar  } from "react-icons/fa";
+
+
+
+const stats = [
+  { label: "Active Students", value: "15,000+", icon: <FaUserGraduate />, bg: "bg-blue-500/10", color: "text-blue-500" },
+  { label: "Expert Tutors", value: "4,500+", icon: <FaChalkboardTeacher />, bg: "bg-emerald-500/10", color: "text-emerald-500" },
+  { label: "Lessons Delivered", value: "85,000+", icon: <FaCheckCircle />, bg: "bg-orange-500/10", color: "text-orange-500" },
+  { label: "Average Rating", value: "4.9/5", icon: <FaStar />, bg: "bg-yellow-500/10", color: "text-yellow-500" },
+];
 
 const tutorSteps = [
   {
@@ -70,7 +80,8 @@ const HowItWorks = () => {
   const currentSteps = activeTab === "tutor" ? tutorSteps : studentSteps;
 
   return (
-    <section className="py-20 bg-base-100 overflow-hidden">
+    <>
+    <section className="py-20  overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -166,6 +177,29 @@ const HowItWorks = () => {
         </div>
       </div>
     </section>
+
+
+<section className="py-16 bg-base-200">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-center group"
+            >
+              <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${stat.bg} ${stat.color} flex items-center justify-center text-3xl group-hover:rotate-12 transition-transform`}>
+                {stat.icon}
+              </div>
+              <h4 className="text-3xl font-black text-base-content">{stat.value}</h4>
+              <p className="text-sm font-bold text-base-content/50 uppercase tracking-widest mt-1">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+</>
   );
 };
 

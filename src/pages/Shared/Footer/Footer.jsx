@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaInstagram, FaYoutube, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { TbBrandX } from "react-icons/tb";
 import { Send } from "lucide-react"; 
 import Logo from "../../../components/Logo/Logo"; 
@@ -30,17 +30,17 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex gap-4 pt-2">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
+              <a href="https://www.facebook.com/musfika.rahman.bushra" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
                 <FaFacebook size={20} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
+              <a href="https://x.com/musfiyeah" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
                 <TbBrandX size={20} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
+              <a href="https://www.instagram.com/oxy_zenith" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
                 <FaInstagram size={20} />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
-                <FaYoutube size={20} />
+              <a href="https://www.linkedin.com/in/musfikarahmanbushra" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-primary transition-all duration-300">
+                <FaLinkedinIn size={20} />
               </a>
             </div>
           </div>
@@ -90,7 +90,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <FaMapMarkerAlt className="text-primary" />
-                <span>Dhaka, Bangladesh</span>
+                <span>Sylhet, Bangladesh</span>
               </li>
             </ul>
           </div>

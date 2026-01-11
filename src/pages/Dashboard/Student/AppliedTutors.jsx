@@ -44,7 +44,8 @@ const handlePayment = async (application) => {
       tutorEmail: application.tutorEmail,
       tutorName: application.tutorName,
       subject: application.subject,
-      tuitionClass: application.class,
+      // tuitionClass: application.class,
+      tuitionClass: application.tuitionClass,
       tuitionId: application.tuitionId,
       studentEmail: user.email,
     }
@@ -99,7 +100,7 @@ const handlePayment = async (application) => {
           key={app._id}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-slate-100 rounded-2xl p-6 shadow hover:shadow-lg transition-all"
+          className="border border-slate-100 rounded-2xl p-6 shadow hover:shadow-lg transition-all"
         >
           <h3 className="text-xl font-bold text-slate-800 mb-2">{app.tutorName}</h3>
           <p className="text-sm text-slate-500 mb-4">

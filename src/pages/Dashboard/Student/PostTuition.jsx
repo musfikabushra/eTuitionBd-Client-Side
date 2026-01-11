@@ -70,7 +70,7 @@ const PostTuition = () => {
         </motion.div>
 
         {/* Form */}
-        <motion.div variants={itemVariants} className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
+        <motion.div variants={itemVariants} className=" p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-2xl ">
           <form onSubmit={handleSubmit} className="space-y-8">
 
             {/* Subject & Class */}
@@ -115,7 +115,7 @@ const PostTuition = () => {
                   name="studentName"
                   defaultValue={user?.displayName || ""}
                   readOnly
-                  className="w-full input input-bordered bg-slate-100 cursor-not-allowed"
+                  className="w-full input input-bordered  cursor-not-allowed"
                 />
               </div>
 
@@ -125,7 +125,7 @@ const PostTuition = () => {
                   name="studentEmail"
                   defaultValue={user?.email || ""}
                   readOnly
-                  className="w-full input input-bordered bg-slate-100 cursor-not-allowed"
+                  className="w-full input input-bordered  cursor-not-allowed"
                 />
               </div>
             </div>

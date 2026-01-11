@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
@@ -18,8 +18,24 @@ const NavBar = () => {
 
   const activeClass = ({ isActive }) =>
     isActive
-      ? "text-indigo-600 font-semibold border-b-2 border-indigo-600 px-3 py-2"
-      : "text-gray-700 hover:text-indigo-500 px-3 py-2";
+      // ? "text-indigo-600 font-semibold border-b-2 border-indigo-600 px-3 py-2"
+      // : "text-gray-700 hover:text-indigo-500 px-3 py-2";
+      ? "text-primary font-semibold border-b-2 border-primary px-3 py-2"
+    : "text-base-content hover:text-primary px-3 py-2";
+
+      
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
+
+  useEffect(() => {
+    const html = document.querySelector('html')
+     html.setAttribute("data-theme", theme)
+     localStorage.setItem("theme", theme)
+  }, [theme])
+
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark": "light")
+  }
 
   const links = (
     <>
@@ -33,7 +49,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 bg-white shadow-md">
+    <div className="sticky top-0 z-50 bg-base-100 text-base-content shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
 {/* Logo */}
         <span className="text-xl flex items-center gap-2">
@@ -49,6 +65,15 @@ const NavBar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-4">
+          {/* theme toggle */}
+          <label className="swap swap-rotate text-base-content mr-4">
+                    <input type="checkbox"
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    defaultChecked={localStorage.getItem('theme') === "dark"}
+                    className="theme-controller" />
+                    <svg aria-label="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-off fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></g></svg>
+                    <svg aria-label="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-on fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></g></svg>
+                </label>
           {user ? (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -114,7 +139,7 @@ const NavBar = () => {
               </button>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-white rounded-lg shadow-md mt-3 w-52 p-2"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-lg shadow-md mt-3 w-52 p-2"
               >
                 {links}
                 {!user && (
