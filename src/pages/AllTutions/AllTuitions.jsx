@@ -16,7 +16,7 @@ const AllTuitions = () => {
   const [filterLocation, setFilterLocation] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
@@ -127,7 +127,7 @@ const AllTuitions = () => {
       </div>
 
       {/* 📦 Cards */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
         {/* 🔄 Skeleton while loading */}
   {loading &&
