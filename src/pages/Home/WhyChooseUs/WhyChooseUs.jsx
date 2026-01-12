@@ -262,7 +262,7 @@ const WhyChooseUs = () => {
               <h2 className="text-3xl font-bold mb-2">Find Tutors by <span className="text-primary">Subject</span></h2>
               <p className="opacity-60">Master any subject with the help of our experts.</p>
             </div>
-            <button className="btn btn-primary btn-outline rounded-full px-8">View All Subjects</button>
+            
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

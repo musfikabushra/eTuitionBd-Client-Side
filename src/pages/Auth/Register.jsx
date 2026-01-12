@@ -85,7 +85,7 @@ await updateUserProfile(name, photoURL);
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl w-full bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row"
+        className="max-w-4xl w-full  rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row"
       >
         {/* Left Side */}
         <div className="md:w-1/2 bg-gradient-to-r from-primary via-indigo-500 to-primary p-12 text-white flex flex-col justify-center items-center text-center">
@@ -98,11 +98,11 @@ await updateUserProfile(name, photoURL);
           </p>
           <div className="space-y-4 text-left hidden md:block">
             <div className="flex items-center gap-3">
-              <div className="bg-white/20 p-2 rounded-lg">✓</div>
+              <div className="p-2 rounded-lg">✓</div>
               <span>Access verified tuitions</span>
             </div>
             <div className="flex items-center gap-3">
-              <div className="bg-white/20 p-2 rounded-lg">✓</div>
+              <div className=" p-2 rounded-lg">✓</div>
               <span>Connect with expert tutors</span>
             </div>
           </div>
@@ -111,7 +111,7 @@ await updateUserProfile(name, photoURL);
         {/* Right Side: Form */}
         <div className="md:w-1/2 p-8 md:p-12">
           <div className="mb-8">
-            <h3 className="text-2xl font-bold text-gray-800">Create Account</h3>
+            <h3 className="text-2xl font-bold  ">Create Account</h3>
             <p className="text-gray-500 text-sm">Fill in the details to get started</p>
           </div>
 
@@ -124,7 +124,7 @@ await updateUserProfile(name, photoURL);
                 </span>
                 <input
                   {...register("name", { required: true })}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-none"
+                  className="input input-bordered w-full pl-10 focus:outline-primary  border-none"
                   type="text"
                   placeholder="Full Name"
                 />
@@ -139,7 +139,7 @@ await updateUserProfile(name, photoURL);
                 </span>
                 <input
                   {...register("email", { required: true })}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-none"
+                  className="input input-bordered w-full pl-10 focus:outline-primary  border-none"
                   type="email"
                   placeholder="Email Address"
                 />
@@ -154,7 +154,7 @@ await updateUserProfile(name, photoURL);
                 </span>
                 <input
                   {...register("photoURL")}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-none"
+                  className="input input-bordered w-full pl-10 focus:outline-primary  border-none"
                   type="text"
                   placeholder="Profile Photo URL"
                 />
@@ -169,7 +169,7 @@ await updateUserProfile(name, photoURL);
                 </span>
                 <input
                   {...register("password", { required: true })}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-none"
+                  className="input input-bordered w-full pl-10 focus:outline-primary  border-none"
                   type="password"
                   placeholder="Password"
                 />
@@ -184,7 +184,7 @@ await updateUserProfile(name, photoURL);
                 </span>
                 <input
                   {...register("phone", { required: true })}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-none"
+                  className="input input-bordered w-full pl-10 focus:outline-primary  border-none"
                   type="text"
                   placeholder="Phone Number"
                 />
@@ -198,7 +198,7 @@ await updateUserProfile(name, photoURL);
               </label>
               <select
                 {...register("role")}
-                className="select select-bordered w-full bg-gray-50 border-none focus:outline-primary"
+                className="select select-bordered w-full  border-none focus:outline-primary"
                 defaultValue="Student"
               >
                 <option value="Student">Student</option>

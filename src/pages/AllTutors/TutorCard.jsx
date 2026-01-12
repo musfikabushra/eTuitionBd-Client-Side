@@ -32,13 +32,6 @@ const TutorCard = ({ tutor }) => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
-
-        {/* <img
-          src={tutor.photoURL || "https://i.ibb.co/5GzXkwq/user.png"}
-          alt={tutor.displayName || tutor.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        /> */}
-
         {/* Verified Badge */}
         {tutor.verified && (
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-lg">

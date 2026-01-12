@@ -1,153 +1,9 @@
-// import React, { useEffect, useState } from "react";
-// import useAxiosSecure from "../../hooks/useAxiosSecure";
-// import TuitionCard from "./TuitionCard";
-// import Loading from "../../components/Loading/Loading";
-// import SkeletonLoader from "../../components/Loading";
-
-// const AllTuitions = () => {
-//   const [tuitions, setTuitions] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   const [search, setSearch] = useState("");
-//   const [sortOption, setSortOption] = useState("");
-//   const [filterClass, setFilterClass] = useState("All");
-//   const [filterSubject, setFilterSubject] = useState("All");
-//   const [filterLocation, setFilterLocation] = useState("All");
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const itemsPerPage = 6;
-
-//   const axiosSecure = useAxiosSecure();
-
-//   useEffect(() => {
-//     axiosSecure.get("/tuitions")
-//       .then((res) => {
-//         setTuitions(res.data);
-//         setLoading(false);
-//       })
-//       .catch(() => setLoading(false));
-//   }, [axiosSecure]);
-
-
-//   if (tuitions.length === 0) return <p className="text-center mt-10">No tuitions available.</p>;
-
-//   const searched = tuitions.filter(t =>
-//     t.subject?.toLowerCase().includes(search.toLowerCase()) ||
-//     t.location?.toLowerCase().includes(search.toLowerCase()) ||
-//     t.class?.toLowerCase().includes(search.toLowerCase())
-//   );
-
-//   const filtered = searched.filter(t =>
-//     (filterClass === "All" || t.class === filterClass) &&
-//     (filterSubject === "All" || t.subject === filterSubject) &&
-//     (filterLocation === "All" || t.location === filterLocation)
-//   );
-
-//   const sorted = [...filtered].sort((a, b) => {
-//     switch (sortOption) {
-//       case "budgetHigh": return b.budget - a.budget;
-//       case "budgetLow": return a.budget - b.budget;
-//       case "dateNew": return new Date(b.date) - new Date(a.date);
-//       case "dateOld": return new Date(a.date) - new Date(b.date);
-//       default: return 0;
-//     }
-//   });
-
-//   const indexOfLastItem = currentPage * itemsPerPage;
-//   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-//   const currentTuitions = sorted.slice(indexOfFirstItem, indexOfLastItem);
-//   const totalPages = Math.ceil(sorted.length / itemsPerPage);
-
-//   const classOptions = ["All Classes", ...new Set(tuitions.map(t => t.class))];
-//   const subjectOptions = ["All Subjects", ...new Set(tuitions.map(t => t.subject))];
-//   const locationOptions = ["All Locations", ...new Set(tuitions.map(t => t.location))];
-
-//   return (
-//     <div className="container mx-auto px-4 py-8">
-//       <h1 className="text-5xl font-bold mb-10 text-center">
-//         All <span className="bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent  tracking-wide">Tuitions</span>
-//       </h1>
-
-//       {/* ✅ Search + Filter + Sort Box */}
-//       <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-//         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-//           <input
-//             type="text"
-//             placeholder="Search by subject, location, or class..."
-//             value={search}
-//             onChange={(e) => {
-//               setSearch(e.target.value);
-//               setCurrentPage(1);
-//             }}
-//             className="px-4 py-2 rounded-md w-full md:w-1/2 focus:outline-none bg-gray-50"
-//           />
-
-//           <select
-//             value={sortOption}
-//             onChange={(e) => setSortOption(e.target.value)}
-//             className="px-4 py-2 rounded-md bg-gray-50 focus:outline-none"
-//           >
-//             <option value="">Sort by</option>
-//             <option value="budgetHigh">Budget: High to Low</option>
-//             <option value="budgetLow">Budget: Low to High</option>
-//             <option value="dateNew">Date: Newest First</option>
-//             <option value="dateOld">Date: Oldest First</option>
-//           </select>
-//         </div>
-
-//         {/* ✅ Filter Dropdowns */}
-//         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-//           <select value={filterClass} onChange={(e) => setFilterClass(e.target.value)} className="px-4 py-2 rounded-md bg-gray-50 focus:outline-none">
-//             {classOptions.map((c, i) => <option key={i} value={c}>{c}</option>)}
-//           </select>
-//           <select value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)} className="px-4 py-2 rounded-md bg-gray-50 focus:outline-none">
-//             {subjectOptions.map((s, i) => <option key={i} value={s}>{s}</option>)}
-//           </select>
-//           <select value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)} className="px-4 py-2 rounded-md bg-gray-50 focus:outline-none">
-//             {locationOptions.map((l, i) => <option key={i} value={l}>{l}</option>)}
-//           </select>
-//         </div>
-//       </div>
-
-//       {/* ✅ Show count */}
-//       <p className="text-sm text-gray-600 mb-4">
-//         Showing {currentTuitions.length} of {sorted.length} tuitions
-//       </p>
-
-//       {/* ✅ Tuition Cards */}
-//       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-
-
-//         {loading ? (<SkeletonLoader />) : (currentTuitions.map((tuition) => (<TuitionCard key={tuition._id} tuition={tuition} />)))}
-
-//         {currentTuitions.map((tuition) => (
-//           <TuitionCard key={tuition._id} tuition={tuition} />
-//         ))}
-//       </div>
-
-//       {/* ✅ Pagination */}
-//       <div className="flex justify-center mt-6 gap-2 flex-wrap">
-//         {Array.from({ length: totalPages }, (_, i) => (
-//           <button
-//             key={i}
-//             onClick={() => setCurrentPage(i + 1)}
-//             className={`px-3 py-1 rounded ${currentPage === i + 1 ? "bg-indigo-600 text-white" : "bg-gray-200 text-gray-700"
-//               }`}
-//           >
-//             {i + 1}
-//           </button>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AllTuitions;
-
-
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import TuitionCard from "./TuitionCard";
-import SkeletonLoader from "../../components/Loading";
+import TuitionCardSkeleton from "../../components/Loading/TuitionCardSkeleton";
+
+
 
 const AllTuitions = () => {
   const [tuitions, setTuitions] = useState([]);
@@ -159,125 +15,146 @@ const AllTuitions = () => {
   const [filterSubject, setFilterSubject] = useState("All");
   const [filterLocation, setFilterLocation] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
 
+  const itemsPerPage = 6;
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axiosSecure.get("/tuitions")
-      .then((res) => {
-        setTuitions(res.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [axiosSecure]);
+  let timer;
+  setLoading(true);
 
-  if (tuitions.length === 0)
-    return <p className="text-center mt-10 text-base-content">No tuitions available.</p>;
-
-  const searched = tuitions.filter(t =>
-    t.subject?.toLowerCase().includes(search.toLowerCase()) ||
-    t.location?.toLowerCase().includes(search.toLowerCase()) ||
-    t.class?.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const filtered = searched.filter(t =>
-    (filterClass === "All" || t.class === filterClass) &&
-    (filterSubject === "All" || t.subject === filterSubject) &&
-    (filterLocation === "All" || t.location === filterLocation)
-  );
-
-  const sorted = [...filtered].sort((a, b) => {
-    switch (sortOption) {
-      case "budgetHigh": return b.budget - a.budget;
-      case "budgetLow": return a.budget - b.budget;
-      case "dateNew": return new Date(b.date) - new Date(a.date);
-      case "dateOld": return new Date(a.date) - new Date(b.date);
-      default: return 0;
-    }
+  axiosSecure.get("/tuitions").then(res => {
+    setTuitions(res.data || []);
+    timer = setTimeout(() => setLoading(false), 700);
   });
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentTuitions = sorted.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(sorted.length / itemsPerPage);
+  return () => clearTimeout(timer);
+}, [axiosSecure]);
 
-  const classOptions = ["All", ...new Set(tuitions.map(t => t.class))];
-  const subjectOptions = ["All", ...new Set(tuitions.map(t => t.subject))];
-  const locationOptions = ["All", ...new Set(tuitions.map(t => t.location))];
+
+  /* 🔍 Search */
+  const searched = tuitions.filter((t) =>
+    `${t.subject} ${t.location} ${t.class}`
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
+  /* 🎯 Filter */
+  const filtered = searched.filter(
+    (t) =>
+      (filterClass === "All" || t.class === filterClass) &&
+      (filterSubject === "All" || t.subject === filterSubject) &&
+      (filterLocation === "All" || t.location === filterLocation)
+  );
+
+  /* 🔃 Sort */
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortOption === "budgetHigh") return b.budget - a.budget;
+    if (sortOption === "budgetLow") return a.budget - b.budget;
+    if (sortOption === "dateNew") return new Date(b.date) - new Date(a.date);
+    if (sortOption === "dateOld") return new Date(a.date) - new Date(b.date);
+    return 0;
+  });
+
+  /* 📄 Pagination */
+  const totalPages = Math.ceil(sorted.length / itemsPerPage);
+  const start = (currentPage - 1) * itemsPerPage;
+  const currentTuitions = sorted.slice(start, start + itemsPerPage);
+
+  /* ❌ NO DATA AFTER LOAD */
+  if (sorted.length === 0) {
+    return (
+      <p className="text-center mt-20 text-base-content text-lg">
+        No tuitions found.
+      </p>
+    );
+  }
+
+  const classOptions = ["All", ...new Set(tuitions.map((t) => t.class))];
+  const subjectOptions = ["All", ...new Set(tuitions.map((t) => t.subject))];
+  const locationOptions = ["All", ...new Set(tuitions.map((t) => t.location))];
 
   return (
     <div className="container mx-auto px-4 py-8 text-base-content">
       <h1 className="text-5xl font-bold mb-10 text-center">
         All{" "}
-        <span className="bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent tracking-wide">
+        <span className="bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent">
           Tuitions
         </span>
       </h1>
 
-      {/* 🔍 Search + Filter + Sort */}
-      <div className="bg-base-100 shadow-md rounded-lg p-6 mb-6 border border-base-300">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+      {/* 🔍 Search + Sort */}
+      <div className="bg-base-100 shadow-md rounded-lg p-6 mb-6 border">
+        <div className="flex flex-col md:flex-row gap-4 mb-4">
           <input
             type="text"
-            placeholder="Search by subject, location, or class..."
+            placeholder="Search by subject, location, class..."
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
               setCurrentPage(1);
             }}
-            className="px-4 py-2 rounded-md w-full md:w-1/2 bg-base-200 focus:outline-none"
+            className="px-4 py-2 rounded-md w-full bg-base-200"
           />
 
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
-            className="px-4 py-2 rounded-md bg-base-200 focus:outline-none"
+            className="px-4 py-2 rounded-md bg-base-200"
           >
             <option value="">Sort by</option>
-            <option value="budgetHigh">Budget: High to Low</option>
-            <option value="budgetLow">Budget: Low to High</option>
-            <option value="dateNew">Date: Newest First</option>
-            <option value="dateOld">Date: Oldest First</option>
+            <option value="budgetHigh">Budget: High → Low</option>
+            <option value="budgetLow">Budget: Low → High</option>
+            <option value="dateNew">Newest</option>
+            <option value="dateOld">Oldest</option>
           </select>
         </div>
 
         {/* 🎯 Filters */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <select className="px-4 py-2 rounded-md bg-base-200 focus:outline-none" value={filterClass} onChange={(e) => setFilterClass(e.target.value)}>
+          <select value={filterClass} onChange={(e) => setFilterClass(e.target.value)} className="px-4 py-2 bg-base-200 rounded">
             {classOptions.map((c, i) => <option key={i}>{c}</option>)}
           </select>
-          <select className="px-4 py-2 rounded-md bg-base-200 focus:outline-none" value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)}>
+
+          <select value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)} className="px-4 py-2 bg-base-200 rounded">
             {subjectOptions.map((s, i) => <option key={i}>{s}</option>)}
           </select>
-          <select className="px-4 py-2 rounded-md bg-base-200 focus:outline-none" value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)}>
+
+          <select value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)} className="px-4 py-2 bg-base-200 rounded">
             {locationOptions.map((l, i) => <option key={i}>{l}</option>)}
           </select>
         </div>
       </div>
 
-      {/* 📊 Count */}
-      <p className="text-sm text-base-content/60 mb-4">
-        Showing {currentTuitions.length} of {sorted.length} tuitions
-      </p>
-
       {/* 📦 Cards */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {loading ? <SkeletonLoader /> : currentTuitions.map(t => (
-          <TuitionCard key={t._id} tuition={t} />
-        ))}
+
+        {/* 🔄 Skeleton while loading */}
+  {loading &&
+    Array.from({ length: itemsPerPage }).map((_, i) => (
+      <TuitionCardSkeleton key={i} />
+    ))
+  }
+
+  {/* ✅ Real data after load */}
+  {!loading &&
+    currentTuitions.map((t) => (
+      <TuitionCard key={t._id} tuition={t} />
+    ))
+  }
       </div>
 
       {/* 📄 Pagination */}
-      <div className="flex justify-center mt-6 gap-2 flex-wrap">
+      <div className="flex justify-center mt-8 gap-2 flex-wrap">
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 rounded transition
-              ${currentPage === i + 1
-                ? "bg-primary text-primary-content"
-                : "bg-base-300 text-base-content"}`}
+            className={`px-3 py-1 rounded ${
+              currentPage === i + 1
+                ? "bg-primary text-white"
+                : "bg-base-300"
+            }`}
           >
             {i + 1}
           </button>

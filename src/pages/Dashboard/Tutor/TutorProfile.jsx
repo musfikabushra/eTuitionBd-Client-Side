@@ -46,7 +46,7 @@ const TutorProfile = () => {
       className="max-w-6xl mx-auto py-10 px-4"
     >
       {/* Top Profile Header Card */}
-      <motion.div variants={itemVariants} className="relative  rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden mb-8">
+      <motion.div variants={itemVariants} className="relative  rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-2xl  overflow-hidden mb-8">
         {/* Abstract Background Decoration */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80  rounded-full blur-3xl opacity-60"></div>
         
@@ -70,7 +70,7 @@ const TutorProfile = () => {
           {/* Core Info */}
           <div className="flex-1 text-center md:text-left">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-4">
-              <h2 className="text-4xl font-black text-slate-900 tracking-tight">{tutor.name}</h2>
+              <h2 className="text-4xl font-black  tracking-tight">{tutor.name}</h2>
               <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${
                 tutor.status === 'Available' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 'bg-rose-50 text-rose-600 border-rose-100'
               }`}>
@@ -78,7 +78,7 @@ const TutorProfile = () => {
               </span>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-500 font-medium">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-medium">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <Mail size={18} className="text-indigo-500" /> {tutor.email}
               </div>
@@ -93,14 +93,7 @@ const TutorProfile = () => {
               </div>
             </div>
 
-            {/* <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
-              <button className="flex  gap-2btn btn-primary btn-lg hover:scale-105 active:scale-95 gap-2 group/btn relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-primary via-indigo-500 to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 rounded-2xl shadow-lg shadow-primary/25 overflow-hidden  ">
-                <MessageCircle size={20} /> Hire Tutor
-              </button>
-              <button className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all active:scale-95 hover:scale-105">
-                Download CV
-              </button>
-            </div> */}
+
           </div>
         </div>
       </motion.div>
@@ -116,7 +109,7 @@ const TutorProfile = () => {
           <div key={i} className=" p-6 rounded-[2rem] border border-slate-100 shadow-xl ">
             <div className="flex justify-center mb-3">{stat.icon}</div>
             <p className="text-sm font-bold text-slate-400 uppercase tracking-tighter mb-1">{stat.label}</p>
-            <h4 className="text-lg font-black text-slate-800">{stat.value}</h4>
+            <h4 className="text-lg font-black">{stat.value}</h4>
           </div>
         ))}
       </motion.div>
@@ -126,13 +119,13 @@ const TutorProfile = () => {
         {/* Left Column: Education & Qualifications */}
         <motion.div variants={itemVariants} className="lg:col-span-2 space-y-8">
           <div className=" p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl ">
-            <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+            <h3 className="text-2xl font-black  mb-6 flex items-center gap-3">
               <GraduationCap className="text-indigo-600" /> Educational Background
             </h3>
             <div className="relative pl-8 border-l-2 border-slate-100 space-y-8">
               <div className="relative">
                 <div className="absolute -left-[41px] top-0 w-5 h-5 bg-indigo-600 rounded-full border-4 border-white shadow-md"></div>
-                <h4 className="text-lg font-black text-slate-800">Higher Qualifications</h4>
+                <h4 className="text-lg font-black ">Higher Qualifications</h4>
                 <p className="text-slate-500 font-medium mt-1 leading-relaxed">
                   {tutor.qualifications}
                 </p>
@@ -141,7 +134,7 @@ const TutorProfile = () => {
           </div>
 
           <div className=" p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl ">
-            <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+            <h3 className="text-2xl font-black mb-6 flex items-center gap-3">
               <Briefcase className="text-indigo-600" /> Professional Summary
             </h3>
             <p className="text-slate-500 font-medium leading-relaxed">
@@ -155,12 +148,12 @@ const TutorProfile = () => {
         {/* Right Column: Expert Subjects */}
         <motion.div variants={itemVariants} className="space-y-8">
           <div className=" p-8 rounded-[2.5rem] border border-slate-100 shadow-xl ">
-            <h3 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-3">
+            <h3 className="text-xl font-black  mb-6 flex items-center gap-3">
               <BookOpen className="text-indigo-600" /> Teaching Skills
             </h3>
             <div className="flex flex-wrap gap-2">
               {['Mathematics', 'Physics', 'Chemistry', 'English', 'Biology'].map((skill, i) => (
-                <span key={i} className=" text-slate-600 font-bold px-4 py-2 rounded-xl text-sm border border-slate-100">
+                <span key={i} className="  font-bold px-4 py-2 rounded-xl text-sm border border-slate-100">
                   {skill}
                 </span>
               ))}

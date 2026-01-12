@@ -260,15 +260,15 @@ const Login = () => {
           <p className="text-indigo-100 mb-8 max-w-xs">
             Log in to manage your tuitions, track applications, and connect with your learning partner.
           </p>
-          <div className="hidden md:block border border-white/20 bg-white/10 p-4 rounded-2xl backdrop-blur-sm">
+          <div className="hidden md:block border border-white/20  p-4 rounded-2xl backdrop-blur-sm">
             <p className="text-sm italic">"Education is the most powerful weapon which you can use to change the world."</p>
           </div>
         </div>
 
         {/* Right Side: Form */}
-        <div className="md:w-1/2 p-8 md:p-12 bg-white">
+        <div className="md:w-1/2 p-8 md:p-12 ">
           <div className="mb-10 text-center md:text-left">
-            <h3 className="text-3xl font-extrabold text-gray-800">Login</h3>
+            <h3 className="text-3xl font-extrabold">Login</h3>
             <p className="text-gray-500 mt-2">Enter your credentials to access your account</p>
           </div>
 
@@ -284,7 +284,7 @@ const Login = () => {
                   type="email"
                   placeholder="name@example.com"
                   {...register("email", { required: true })}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-gray-200"
+                  className="input input-bordered w-full pl-10 focus:outline-primary -50 border-gray-200"
                 />
               </div>
             </div>
@@ -303,7 +303,7 @@ const Login = () => {
                   type="password"
                   placeholder="••••••••"
                   {...register("password", { required: true })}
-                  className="input input-bordered w-full pl-10 focus:outline-primary bg-gray-50 border-gray-200"
+                  className="input input-bordered w-full pl-10 focus:outline-primary border-gray-200"
                 />
               </div>
             </div>
@@ -319,7 +319,7 @@ const Login = () => {
           {/* Google login */}
           <button
             onClick={handleGoogleLogin}
-            className="btn btn-outline w-full border-gray-300 hover:bg-gray-50 text-gray-700 font-bold gap-3 transition-all rounded-xl hover:scale-105"
+            className="btn btn-outline w-full border-gray-300 hover:bg-gray-50  font-bold gap-3 transition-all rounded-xl hover:scale-105"
           >
             <FcGoogle size={22} />
             Login with Google
@@ -328,7 +328,7 @@ const Login = () => {
           {/* Demo login */}
           <button
             onClick={handleDemoLogin}
-            className="btn btn-outline w-full mt-4 border-gray-300 hover:bg-gray-50 text-gray-700 font-bold gap-3 transition-all rounded-xl hover:scale-105"
+            className="btn btn-outline w-full mt-4 border-gray-300 hover:bg-gray-50  font-bold gap-3 transition-all rounded-xl hover:scale-105"
           >
             <LogIn size={20} /> Demo Login
           </button>

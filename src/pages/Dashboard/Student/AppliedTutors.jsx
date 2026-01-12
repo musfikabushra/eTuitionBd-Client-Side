@@ -102,23 +102,23 @@ const handlePayment = async (application) => {
           animate={{ opacity: 1, y: 0 }}
           className="border border-slate-100 rounded-2xl p-6 shadow hover:shadow-lg transition-all"
         >
-          <h3 className="text-xl font-bold text-slate-800 mb-2">{app.tutorName}</h3>
+          <h3 className="text-xl font-bold  mb-2">{app.tutorName}</h3>
           <p className="text-sm text-slate-500 mb-4">
             Applied on: {new Date(app.createdAt).toLocaleDateString()}
           </p>
-          <p className="text-slate-700 mb-2">
+          <p className=" mb-2">
             <span className="font-bold">Subject:</span> {app.subject}
           </p>
-          <p className="text-slate-700 mb-2">
+          <p className=" mb-2">
             <span className="font-bold">Class:</span> {app.class}
           </p>
-          <p className="text-slate-700 mb-2">
+          <p className=" mb-2">
             <span className="font-bold">Qualifications:</span> {app.qualifications}
           </p>
-          <p className="text-slate-700 mb-2">
+          <p className=" mb-2">
             <span className="font-bold">Experience:</span> {app.experience}
           </p>
-          <p className="text-slate-700 mb-4">
+          <p className=" mb-4">
             <span className="font-bold">Expected Salary:</span> ৳{app.expectedSalary}
           </p>
           <div className="flex items-center gap-2 mb-4">

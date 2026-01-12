@@ -40,7 +40,7 @@ const Counter = ({ value, label }) => {
       className=" rounded-xl shadow-md p-6 text-center border border-gray-100"
     >
       <h3 className="text-4xl font-bold text-primary mb-2">{value}+</h3>
-      <p className="text-gray-600 font-medium">{label}</p>
+      <p className=" font-medium">{label}</p>
     </motion.div>
   );
 };
@@ -49,7 +49,7 @@ const About = () => {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="relative text-gray-800">
+    <div className="relative ">
       {/* SCROLL PROGRESS */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
@@ -86,10 +86,10 @@ const About = () => {
               <span>Our Purpose</span>
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold  leading-tight">
               Revolutionizing the way you find <span className=" bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent md:text-2xltracking-wide">Tutors.</span>
             </h2>
-            <p className="text-gray-600 leading-relaxed">
+            <p className=" leading-relaxed">
               We believe quality education is a right, not a luxury. Our automated matching algorithm ensures you find a tutor who understands your unique pace of learning in less than 24 hours.
             </p>
             <ul className="space-y-4 pt-2">
@@ -126,7 +126,7 @@ const About = () => {
           <div className="space-y-6">
   {/* Title with subtle accent */}
   <div className="relative inline-block">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+    <h2 className="text-3xl md:text-4xl font-bold mb-2">
        Learning Made <span className=" bg-gradient-to-r from-primary via-indigo-500 to-primary bg-clip-text text-transparent md:text-2xltracking-widerelative">Simple
         <svg className="absolute -bottom-1 left-0 w-full h-2 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
           <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" />
@@ -135,9 +135,9 @@ const About = () => {
     </h2>
   </div>
 
-  <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+  <p className=" text-lg leading-relaxed max-w-lg">
     From posting tuition needs to selecting the perfect tutor, 
-    everything is designed to be <span className="font-semibold text-gray-800">smooth, fast, and student-friendly.</span>
+    everything is designed to be <span className="font-semibold ">smooth, fast, and student-friendly.</span>
   </p>
 
   {/* Quick Highlights */}
@@ -149,7 +149,7 @@ const About = () => {
     ].map((item, index) => (
       <div key={index} className="flex items-center gap-3  p-3 rounded-xl shadow-sm border border-gray-50 hover:border-primary/20 transition-colors">
         <span className="text-xl">{item.icon}</span>
-        <span className="text-sm font-medium text-gray-700">{item.text}</span>
+        <span className="text-sm font-medium ">{item.text}</span>
       </div>
     ))}
   </div>
@@ -168,8 +168,8 @@ const About = () => {
       <section className=" py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">🤝 Meet Our Awesome Team</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto font-medium">
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">🤝 Meet Our Awesome Team</h2>
+            <p className=" max-w-2xl mx-auto font-medium">
              The faces behind our efforts—constantly working to ensure the best experience for you.
             </p>
           </div>
@@ -194,7 +194,7 @@ const About = () => {
                     onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`; }}
                   />
                 </div>
-                <h3 className="font-bold text-xl text-gray-800 mb-1">{member.name}</h3>
+                <h3 className="font-bold text-xl  mb-1">{member.name}</h3>
                 <p className="text-sm font-bold text-primary uppercase tracking-widest">{member.role}</p>
               </motion.div>
             ))}
@@ -213,7 +213,7 @@ const About = () => {
     <h2 className="text-3xl md:text-4xl font-bold mb-6">
       🚀 Ready to Start Your Learning Journey?
     </h2>
-    <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">
+    <p className=" max-w-2xl mx-auto mb-10 text-lg">
       Whether you are a student looking for the perfect tutor or a tutor
       ready to share knowledge, <span className="font-bold">eTuitionBd</span> is
       the right place to begin.

@@ -61,7 +61,7 @@ const PostTuition = () => {
           <div className="bg-indigo-600/10 inline-block p-4 rounded-3xl mb-6">
             <BookOpen size={40} className="text-indigo-600" />
           </div>
-          <h2 className="text-4xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-4xl font-black  tracking-tight">
             Post New <span className="text-indigo-600">Tuition</span>
           </h2>
           <p className="text-slate-500 mt-3 font-medium flex items-center justify-center gap-2">

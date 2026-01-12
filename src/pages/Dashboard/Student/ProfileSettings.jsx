@@ -40,7 +40,7 @@ const EditProfile = () => {
             >
                 {/* Profile Header */}
                 <div className="flex flex-col items-center mb-10 text-center">
-                    <h2 className="text-3xl font-black text-slate-800 mb-8">Edit Profile</h2>
+                    <h2 className="text-3xl font-black mb-8">Edit Profile</h2>
                     
                     <div className="relative group">
                         <div className="absolute inset-0 bg-indigo-500 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
@@ -56,7 +56,7 @@ const EditProfile = () => {
                     </div>
 
                     <div className="mt-5">
-                        <h3 className="text-2xl font-bold text-slate-800 tracking-tight">
+                        <h3 className="text-2xl font-bold  tracking-tight">
                             {nameValue || "Your Name"}
                         </h3>
                         <div className="flex items-center justify-center gap-2 text-slate-500 mt-1 font-medium">
@@ -71,13 +71,13 @@ const EditProfile = () => {
                     <div className="space-y-5">
                         {/* Name Input */}
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
+                            <label className="text-xs font-bold  uppercase tracking-widest ml-1">Full Name</label>
                             <div className="relative group">
-                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                                <User className="absolute left-4 top-1/2 -translate-y-1/2 group-focus-within:text-indigo-500 transition-colors" size={20} />
                                 <input 
                                     {...register("name", { required: "Name is required" })} 
                                     type="text" 
-                                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-4 py-4 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700" 
+                                    className="w-full  border border-slate-200 rounded-2xl pl-12 pr-4 py-4 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700" 
                                     placeholder="Ex: John Doe" 
                                 />
                             </div>
@@ -85,13 +85,13 @@ const EditProfile = () => {
 
                         {/* Photo URL Input */}
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Avatar Link (URL)</label>
+                            <label className="text-xs font-bold uppercase tracking-widest ml-1">Avatar Link (URL)</label>
                             <div className="relative group">
                                 <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
                                 <input 
                                     {...register("photo", { required: "Photo URL is required" })} 
                                     type="url" 
-                                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-4 py-4 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-semibold text-slate-700" 
+                                    className="w-full  border border-slate-200 rounded-2xl pl-12 pr-4 py-4 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-semibold " 
                                     placeholder="https://image-link.com" 
                                 />
                             </div>
