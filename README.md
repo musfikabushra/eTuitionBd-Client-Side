@@ -1,4 +1,4 @@
-# 📚 eTuitionBD
+# eTuitionBD
 
 A complete Tuition Management System for students, tutors, and admins to manage tuition activities, applications, payments, and communication.
 
