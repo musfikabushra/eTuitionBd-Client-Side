@@ -4,12 +4,12 @@ A complete Tuition Management System for students, tutors, and admins to manage 
 
 ---
 
-## 🌐 Live Site
+## Live Site
 (https://etuitionbd-client.web.app)
 
 ---
 
-## 🎯 Project Purpose
+## Project Purpose
 To solve the real-world problem of finding qualified tutors and verified tuition opportunities.  
 The platform streamlines student–tutor interaction, automates workflows, and ensures secure payments and transparent communication.
 
