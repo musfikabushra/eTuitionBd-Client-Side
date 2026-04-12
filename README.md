@@ -15,20 +15,20 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 
 ---
 
-## 🚀 Features
+## Features
 
-### 🔐 Authentication
+### Authentication
 - Register as Student or Tutor  
 - Firebase Auth with Google Login  
 - JWT-based role routing  
 
-### 🏠 Public Pages
+### Public Pages
 - Home (Hero, Latest Tuitions, Latest Tutors, Framer Motion animations)  
 - Tuitions Listing & Details  
 - Tutors Listing & Profile  
 - About, Contact  
 
-### 📊 Student Dashboard
+### Student Dashboard
 - Post New Tuition  
 - View & Manage My Tuitions  
 - View Applied Tutors  
@@ -37,18 +37,18 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 - Payment History  
 - Profile Settings  
 
-### 🧑‍🏫 Tutor Dashboard
+### Tutor Dashboard
 - Apply to Tuition Posts  
 - Track My Applications  
 - View Ongoing Tuitions  
 - Revenue History  
 
-### 🛡️ Admin Dashboard
+### Admin Dashboard
 - Manage Users (Update/Delete/Change Roles)  
 - Approve/Reject Tuition Posts  
 - View Reports & Earnings  
 
-### 📈 Extra Functionalities
+### Extra Functionalities
 - Protected Routes with JWT Role Verification  
 - Responsive UI for all devices  
 - Loading Spinner & Error Page  
@@ -57,9 +57,9 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 
 ---
 
-## 🧪 Technologies Used
+## Technologies Used
 
-### 🧑‍💻 Client
+### Client
 - React.js  
 - React Router DOM  
 - Firebase Auth  
@@ -68,7 +68,7 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 - Stripe.js  
 - DaisyUI + TailwindCSS  
 
-### 🛠️ Server
+### Server
 - Node.js  
 - Express.js  
 - MongoDB  
@@ -78,7 +78,7 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 
 ---
 
-## 📦 Packages
+## Packages
 - react-router-dom  
 - firebase  
 - axios  
@@ -90,14 +90,14 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 - Firebase keys stored in `.env`  
 - MongoDB credentials secured via `.env`  
 - Stripe Secret Key stored securely  
 
 ---
 
-## ✅ Deployment Checklist
+## Deployment Checklist
 - No CORS / 404 / 504 issues  
 - Private routes persist after reload  
 - Firebase authorized domain updated  
@@ -105,7 +105,7 @@ The platform streamlines student–tutor interaction, automates workflows, and e
 
 ---
 
-## 📤 Submission
+## Submission
 - Admin Email & Password  
 - Live Site Link  
 - GitHub Repo (Client & Server)  
